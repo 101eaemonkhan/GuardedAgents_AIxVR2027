@@ -47,7 +47,7 @@ print("Benign utility failures, no defense (agent errors):", [r["id"] for r in B
 
 # ---------- Fig. 2 (drawn at printed size: 2.9 in wide, no scaling) ----------
 plt.rcParams.update({"font.family":"Liberation Serif","font.size":7.5,"pdf.fonttype":42,"hatch.linewidth":0.6})
-fig, ax = plt.subplots(figsize=(2.9, 1.85))
+fig, ax = plt.subplots(figsize=(2.9, 1.42))
 groups = [("asr","ASR\n(LLM agent)"),("asr_wc","ASR\n(worst case)"),("util","Utility\n(benign)"),("util_att","Utility\n(under attack)")]
 x = np.arange(len(groups)); w = 0.27
 styles = {"none":dict(fc="white",ec="black",hatch="////"),"detector":dict(fc="#A8A8A8",ec="black"),"guarded":dict(fc="#303030",ec="black")}
@@ -57,9 +57,9 @@ for i,d in enumerate(D):
     for b,v in zip(bars,vals):
         ax.text(b.get_x()+b.get_width()/2, v+1.5, f"{v:.0f}", ha="center", va="bottom", fontsize=6.5)
 ax.set_xticks(x); ax.set_xticklabels([g for _,g in groups], fontsize=7)
-ax.set_ylabel("Scenarios (%)", fontsize=7.5); ax.set_ylim(0, 112)
+ax.set_ylabel("Scenarios (%)", fontsize=7.5); ax.set_ylim(0, 108)
 ax.set_yticks([0,25,50,75,100]); ax.tick_params(axis="y", labelsize=7)
 ax.spines[["top","right"]].set_visible(False)
-ax.legend(ncol=3, fontsize=6.8, frameon=False, loc="upper center", bbox_to_anchor=(0.47,1.17), handlelength=1.2, columnspacing=0.7, handletextpad=0.4)
+ax.legend(ncol=3, fontsize=6.8, frameon=False, loc="upper center", bbox_to_anchor=(0.47,1.24), handlelength=1.2, columnspacing=0.7, handletextpad=0.4)
 fig.tight_layout(pad=0.2)
 fig.savefig(os.path.join(HERE, "fig2_results.pdf")); fig.savefig(os.path.join(HERE, "fig2_results.png"), dpi=300)

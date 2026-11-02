@@ -1,5 +1,7 @@
 # GuardedAgents – preliminary evaluation artifact
 
+**Demo video:** `GuardedAgents_demo.mp4` (86 s, 1080p). A WebXR scene showing a benign purchase (CONFIRM through the system prompt), a scene-text injection (A1, BLOCK), a co-present-avatar injection (A3, BLOCK), and a consent-spoofing attempt (A4, rejected by the system channel). XR inputs are simulated; agent outputs are replayed verbatim from `results.json`; every decision is computed live by `demo/gate.js`, a JavaScript port of `gate.py` with identical rules (`node demo/test_parity.js` checks all 125 recorded actions). To run the demo, open `demo/index.html` in a browser (works offline). A-Frame 1.6.0 (MIT license) is bundled.
+
 - `gate.py` – policy gate: risk tiers, provenance (Eq. 1), social context (Eq. 2), decision matrix (Eq. 3, Table II), consent-channel routing model.
 - `scenarios.py` – 20 benign, 24 injection-attack (A1 scene text, A2 app overlay, A3 co-present avatar) and 5 consent-spoofing (A4) scenarios.
 - `run_eval.py` – runs the LLM agent (Qwen2.5-1.5B-Instruct, greedy decoding) under No defense / LLM detector / GuardedAgents, plus a worst-case (fully compromised) agent.
